@@ -1,0 +1,113 @@
+return {}
+--   {
+--     "frankroeder/parrot.nvim",
+--     dependencies = { "ibhagwan/fzf-lua", "nvim-lua/plenary.nvim" },
+--     -- optionally include "rcarriga/nvim-notify" for beautiful notifications
+--     config = function()
+--       require("parrot").setup({
+--         -- Providers must be explicitly added to make them available.
+--         providers = {
+--           -- provide an empty list to make provider available (no API key required)
+--           ollama = {},
+--         },
+--       })
+--     end,
+--   },
+
+-- Add the new plugin configuration
+--   {
+--     "yetone/avante.nvim",
+--     event = "VeryLazy",
+--     lazy = true,
+--     --  version = false, -- set this if you want to always pull the latest change
+--     --     opts = {
+--     --       -- add any opts here
+--     --     },
+--     --     keys = {
+--     --       {
+--     --         "<leader>aa",
+--     --         function()
+-- -    --           require("avante.api").ask()
+--     --         end,
+--     --         desc = "avante: ask",
+--     --         mode = { "n", "v" },
+--     --       },
+--     --       {
+--     --         "<leader>ar",
+--     --         function()
+--     --           require("avante.api").refresh()
+--     --         end,
+--     --         desc = "avante: refresh",
+--     --       },
+--     --       {
+--     --         "<leader>ae",
+--     --         function()
+--     --           require("avante.api").edit()
+--     --         end,
+--     --         desc = "avante: edit",
+--     --         mode = "v",
+--     --       },
+--     --     },
+--     build = "make",
+--     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+--     dependencies = {
+--       "stevearc/dressing.nvim",
+--       "nvim-lua/plenary.nvim",
+--       "MunifTanjim/nui.nvim",
+--       "nvim-tree/nvim-web-devicons",
+--       {
+--         "HakonHarnes/img-clip.nvim",
+--         event = "VeryLazy",
+--         opts = {
+--           default = {
+--             embed_image_as_base64 = false,
+--             prompt_for_file_name = false,
+--             drag_and_drop = {
+--               insert_mode = true,
+--             },
+--             use_absolute_path = true,
+--           },
+--         },
+--       },
+--       {
+--         "MeanderingProgrammer/render-markdown.nvim",
+--         opts = {
+--           file_types = { "markdown", "Avante" },
+--         },
+--         ft = { "markdown", "Avante" },
+--       },
+--     },
+--     config = function()
+--       require("avante").setup({
+--         provider = "ollama",
+--         vendors = {
+--           ---@type AvanteProvider
+--           ollama = {
+--             ["local"] = true,
+--             endpoint = "127.0.0.1:11434/v1",
+--             -- model = "codegemma",
+--             model = "qwen2.5-coder:7b-instruct",
+--             parse_curl_args = function(opts, code_opts)
+--               return {
+--                 url = "127.0.0.1:11434/v1/chat/completions",
+--                 headers = {
+--                   ["Accept"] = "application/json",
+--                   ["Content-Type"] = "application/json",
+--                 },
+--                 body = {
+--                   model = "qwen2.5-coder:7b-instruct",
+--                   messages = require("avante.providers").copilot.parse_message(code_opts),
+--                   max_tokens = 2048,
+--                   stream = true,
+--                 },
+--               }
+--             end,
+--             parse_response_data = function(data_stream, event_state, opts)
+--               require("avante.providers").openai.parse_response(data_stream, event_state, opts)
+--             end,
+--           },
+--         },
+--       })
+--     end,
+--   },
+--}
