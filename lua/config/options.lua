@@ -4,6 +4,9 @@
 -- --
 local opt = vim.opt
 
+-- some defaults, I like
+vim.diagnostic.enable(false)
+
 opt.wrap = true
 -- opt.background = "dark"
 

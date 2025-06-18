@@ -1,4 +1,10 @@
 return {
+  -- Add vim-paper theme
+  {
+    "yorickpeterse/vim-paper",
+    lazy = false,
+    priority = 1000, -- Make sure it loads early
+  },
   { "shaunsingh/nord.nvim" },
   { "kepano/flexoki-neovim", name = "flexoki" },
   { "sainnhe/everforest" },
@@ -11,11 +17,12 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
+      colorscheme = "vim-paper",
       -- colorscheme = "parchment",
       -- colorscheme = "kanagawa",
       -- colorscheme = "parchment",
       -- colorscheme = "tokyonight-night",
-      --colorscheme = "tokyonight-day",
+      -- colorscheme = "tokyonight-day",
       -- colorscheme = "tokyonight-night",
       --       everforest_enable_italic = true,
       --       everforest_background = "soft",

@@ -83,13 +83,13 @@ return {
   --  },
 
   -- Notification manager
-  {
-    "rcarriga/nvim-notify",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      opts.background_colour = "#000000" -- 100% transparency
-    end,
-  },
+  --  {
+  --    "rcarriga/nvim-notify",
+  --    event = "VeryLazy",
+  --    opts = function(_, opts)
+  --      opts.background_colour = "#000000" -- 100% transparency
+  --    end,
+  --  },
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
