@@ -6,9 +6,9 @@ Applied multiple performance optimizations to reduce lag, especially in completi
 
 ## Changes Made
 
-### 1. **Completion Performance (blink.cmp)** - NEW FILE
+### 1. Completion Performance (blink.cmp) - NEW FILE
 
-- **File**: `lua/plugins/blink-performance.lua`
+- File: `lua/plugins/blink-performance.lua`
 - Added 100ms delay before showing completion menu (was 0ms - too aggressive)
 - Reduced documentation auto-show delay to 300ms (was 500ms)
 - Disabled ghost text (causes redraws)
@@ -17,27 +17,27 @@ Applied multiple performance optimizations to reduce lag, especially in completi
 - Optimized LSP timeout to 300ms
 - Added provider-specific timeouts
 
-### 2. **Motion Plugins**
+### 2. Motion Plugins
 
-- **File**: `lua/plugins/motions.lua`
+- File: `lua/plugins/motions.lua`
 - Disabled `vim-move` (redundant - using `mini.move` from extras)
 
-### 3. **UI Performance**
+### 3. UI Performance
 
-- **File**: `lua/plugins/ui.lua`
+- File: `lua/plugins/ui.lua`
 - Disabled `tint.nvim` - causes lag with multiple windows
 - Enabled `performance_mode` for neoscroll.nvim
 
-### 4. **LSP Timeout**
+### 4. LSP Timeout
 
-- **File**: `lua/plugins/lsp-overrides.lua`
+- File: `lua/plugins/lsp-overrides.lua`
 - Configured `lsp-timeout.nvim` with 1000ms timeout
 - Prevents slow LSP servers from blocking UI
 - Marksman already disabled (slow in large files)
 
-### 5. **Editor Options**
+### 5. Editor Options
 
-- **File**: `lua/config/options.lua`
+- File: `lua/config/options.lua`
 - Reduced `updatetime` from 250ms to 100ms for faster responsiveness
 
 ## Plugin Recommendations
