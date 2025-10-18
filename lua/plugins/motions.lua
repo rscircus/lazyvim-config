@@ -1,10 +1,4 @@
 return {
-  -- Disable vim-move, use mini.move instead (already in extras)
-  {
-    "matze/vim-move",
-    enabled = false,
-  },
-
   -- replace existing text with contents from a register
   {
     "vim-scripts/ReplaceWithRegister",

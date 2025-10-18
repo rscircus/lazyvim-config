@@ -24,6 +24,10 @@ opt.clipboard = "unnamedplus"
 -- Decrease update time (lower = faster completions but more CPU)
 opt.updatetime = 100
 opt.signcolumn = "yes"
+-- TODO: opt.scrolloff = 8
+
+-- Disable spell checking on startup
+opt.spell = false
 
 -- WINDOWS special handling
 if vim.fn.has("wsl") == 1 then

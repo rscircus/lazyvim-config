@@ -29,3 +29,16 @@ create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
   pattern = { "*.mdx" },
   command = [[ set filetype=markdown ]],
 })
+
+-- Enable spell check for 5 seconds when saving files
+create_augroup("spell_check_on_save", { clear = true })
+create_autocmd("BufWritePost", {
+  desc = "Enable spell check for 5 seconds after saving",
+  group = "spell_check_on_save",
+  callback = function()
+    vim.opt.spell = true
+    vim.defer_fn(function()
+      vim.opt.spell = false
+    end, 5000)
+  end,
+})

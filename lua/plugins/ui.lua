@@ -40,28 +40,10 @@ return {
     },
   },
 
-  -- Smooth scrolling (optimized for performance)
-  {
-    "karb94/neoscroll.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- All these keys will be mapped to their corresponding default scrolling animation
-      mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
-      hide_cursor = true, -- Hide cursor while scrolling
-      stop_eof = true, -- Stop at <EOF> when scrolling downwards
-      respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-      cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-      easing_function = nil, -- Default easing function (nil = linear, fastest)
-      pre_hook = nil, -- Function to run before the scrolling animation starts
-      post_hook = nil, -- Function to run after the scrolling animation ends
-      performance_mode = true, -- Enable performance mode to reduce lag
-    },
-  },
-
   -- Tint inactive windows (disabled for performance)
   {
     "levouh/tint.nvim",
-    enabled = false, -- Can cause lag with many windows
+    enabled = true, -- TODO: Can cause lag with many windows
   },
 
   -- Expand window width with animation
