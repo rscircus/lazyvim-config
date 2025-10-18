@@ -1,8 +1,8 @@
 return {
-  -- move lines and selections up and down
+  -- Disable vim-move, use mini.move instead (already in extras)
   {
     "matze/vim-move",
-    event = "VeryLazy",
+    enabled = false,
   },
 
   -- replace existing text with contents from a register

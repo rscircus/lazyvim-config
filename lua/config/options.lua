@@ -21,8 +21,8 @@ opt.undofile = true
 --vim.cmd()
 opt.clipboard = "unnamedplus"
 
--- Decrease update time
-opt.updatetime = 250
+-- Decrease update time (lower = faster completions but more CPU)
+opt.updatetime = 100
 opt.signcolumn = "yes"
 
 -- WINDOWS special handling

@@ -40,7 +40,7 @@ return {
     },
   },
 
-  -- Smooth scrolling
+  -- Smooth scrolling (optimized for performance)
   {
     "karb94/neoscroll.nvim",
     event = "VeryLazy",
@@ -51,18 +51,17 @@ return {
       stop_eof = true, -- Stop at <EOF> when scrolling downwards
       respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
       cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-      easing_function = nil, -- Default easing function
+      easing_function = nil, -- Default easing function (nil = linear, fastest)
       pre_hook = nil, -- Function to run before the scrolling animation starts
       post_hook = nil, -- Function to run after the scrolling animation ends
-      performance_mode = false, -- Disable "Performance Mode" on all buffers.
+      performance_mode = true, -- Enable performance mode to reduce lag
     },
   },
 
-  -- Tint inactive windows
+  -- Tint inactive windows (disabled for performance)
   {
     "levouh/tint.nvim",
-    config = true,
-    event = "VeryLazy",
+    enabled = false, -- Can cause lag with many windows
   },
 
   -- Expand window width with animation
