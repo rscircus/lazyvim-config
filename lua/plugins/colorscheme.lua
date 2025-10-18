@@ -4,6 +4,16 @@ return {
     "yorickpeterse/vim-paper",
     lazy = false,
     priority = 1000, -- Make sure it loads early
+    config = function()
+      -- Set up custom highlights after the colorscheme loads
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "paper",
+        callback = function()
+          -- Make comments black
+          vim.api.nvim_set_hl(0, "Comment", { fg = "#000000", italic = true })
+        end,
+      })
+    end,
   },
   { "shaunsingh/nord.nvim" },
   { "kepano/flexoki-neovim", name = "flexoki" },
@@ -17,7 +27,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vim-paper",
+      colorscheme = "paper", -- that's vim-paper actually
+      --colorscheme = "vim-paper",
       -- colorscheme = "parchment",
       -- colorscheme = "kanagawa",
       -- colorscheme = "parchment",
