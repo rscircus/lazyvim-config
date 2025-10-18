@@ -122,10 +122,11 @@ return {
   --   },
 
   -- start/stop lsp servers upon demand to reduce RAM memory usage
-  {
-    "hinell/lsp-timeout.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
-  },
+  -- TODO: Got it's own file - remove later
+  --{
+  --  "hinell/lsp-timeout.nvim",
+  --  dependencies = { "neovim/nvim-lspconfig" },
+  --},
 
   -- show lsp progress
   {
