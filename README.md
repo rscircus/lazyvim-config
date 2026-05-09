@@ -35,6 +35,7 @@ A performance-tuned [LazyVim](https://github.com/LazyVim/LazyVim) configuration 
 - DAP: Debug Adapter Protocol support
 - Neotest: Test runner integration
 - GitUI: Terminal git interface
+- GV: Git commit browser (`<leader>gV`, current file with `<leader>gv`)
 - Git Blame: Virtual text blame info (disabled by default, toggle with `<leader>gu`)
 - Aerial: Code outline with LSP symbols
 - Navic: LSP location breadcrumbs

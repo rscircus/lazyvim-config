@@ -1,13 +1,14 @@
-return {
-  {
-    "stevearc/aerial.nvim",
-    opts = {
-      -- Open aerial automatically when entering a buffer
-      open_automatic = true,
-      -- Only open aerial in windows larger than this
-      open_automatic_min_lines = 0,
-      -- Don't open aerial when entering certain filetypes
-      open_automatic_min_symbols = 0,
-    },
-  },
-}
+return {}
+-- return {
+--   {
+--     "stevearc/aerial.nvim",
+--     opts = {
+--       -- Open aerial automatically when entering a buffer
+--       open_automatic = true,
+--       -- Only open aerial in windows larger than this
+--       open_automatic_min_lines = 0,
+--       -- Don't open aerial when entering certain filetypes
+--       open_automatic_min_symbols = 0,
+--     },
+--   },
+-- }
