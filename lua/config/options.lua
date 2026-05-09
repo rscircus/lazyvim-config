@@ -21,8 +21,8 @@ opt.undofile = true
 --vim.cmd()
 opt.clipboard = "unnamedplus"
 
--- Decrease update time (lower = faster completions but more CPU)
-opt.updatetime = 100
+-- Balance responsiveness with idle CPU usage
+opt.updatetime = 200
 opt.signcolumn = "yes"
 -- TODO: opt.scrolloff = 8
 

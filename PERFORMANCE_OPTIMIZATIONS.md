@@ -2,83 +2,43 @@
 
 ## Summary
 
-Applied multiple performance optimizations to reduce lag, especially in completion and UI rendering.
+This config prioritizes lazy-loading and avoids plugins that redraw heavily during normal editing.
 
-## Changes Made
+## Applied Changes
 
-### 1. Completion Performance (blink.cmp) - NEW FILE
+### Startup Loading
 
-- File: `lua/plugins/blink-performance.lua`
-- Added 100ms delay before showing completion menu (was 0ms - too aggressive)
-- Reduced documentation auto-show delay to 300ms (was 500ms)
-- Disabled ghost text (causes redraws)
-- Set minimum keyword length to 2 characters before triggering
-- Limited buffer completions to 5 items max
-- Optimized LSP timeout to 300ms
-- Added provider-specific timeouts
+- Lazy-loaded Quarto/Image/Molten stack.
+- Lazy-loaded inactive colorschemes.
+- Lazy-loaded `mdeval.nvim`, `fidget.nvim`, `satellite.nvim`, and `zen-mode.nvim`.
+- Removed stale MiniMap keymap while `mini.map` is disabled.
+- Removed unsupported `org` Treesitter ensure entry; `orgmode` provides its own setup.
 
-### 2. Motion Plugins
+### UI Performance
 
-- File: `lua/plugins/motions.lua`
-- Disabled `vim-move` (redundant - using `mini.move` from extras)
+- Disabled `tint.nvim`; it can lag with many windows.
+- Disabled `yanky.nvim`; it can be heavy on large sessions.
+- Kept animations disabled through `vim.g.snacks_animate = false`.
 
-### 3. UI Performance
+### LSP Cleanup
 
-- File: `lua/plugins/ui.lua`
-- Disabled `tint.nvim` - causes lag with multiple windows
-- Enabled `performance_mode` for neoscroll.nvim
+- Deleted deprecated local LSP handler code that referenced removed `Lspsaga` and `cmp_nvim_lsp` setup.
+- Kept the active LSP override that disables slow `marksman` for large markdown files.
+- Lazy-load `fidget.nvim` on `LspAttach`.
 
-### 4. LSP Timeout
+### Editing Options
 
-- File: `lua/plugins/lsp-overrides.lua`
-- Configured `lsp-timeout.nvim` with 1000ms timeout
-- Prevents slow LSP servers from blocking UI
-- Marksman already disabled (slow in large files)
+- Set `updatetime = 200` to balance responsiveness and idle CPU usage.
+- Limited the temporary save-time spell check to prose files and made it window-local.
 
-### 5. Editor Options
+### Extras Trimmed
 
-- File: `lua/config/options.lua`
-- Reduced `updatetime` from 250ms to 100ms for faster responsiveness
+- Removed the Clojure LazyVim extra because Conjure was already disabled.
 
-## Plugin Recommendations
+## Validation
 
-### Already Using (Good!)
+Use these after changes:
 
-- ✅ `blink.cmp` - Much faster than nvim-cmp (0.5-4ms vs 60ms debounce)
-- ✅ `mini.move` - Lua-based, faster than vim-move
-- ✅ `snacks.nvim` - Modern, performant utilities
-
-### Performance Issues Found
-
-- ⚠️ `tint.nvim` - Disabled (causes lag with many windows)
-- ⚠️ `vim-move` - Disabled (redundant with mini.move)
-- ⚠️ `marksman` LSP - Already disabled (slow in large files)
-
-### Consider Replacing (Future)
-
-- `neoscroll.nvim` - Consider native smooth scroll or mini.animate
-- `lspsaga.nvim` - Heavy plugin; LazyVim's native LSP UI is lighter
-- `satellite.nvim` + `neominimap.nvim` - Two minimap plugins is redundant
-
-## Testing Instructions
-
-1. Restart Neovim: `:qa` then reopen
-2. Run `:Lazy sync` to install/update plugins
-3. Test completion lag - should feel more responsive
-4. Monitor with `:Lazy profile` to see load times
-
-## Expected Improvements
-
-- ✨ Completion menu appears faster (100ms vs instant flicker)
-- ✨ Less CPU usage during typing
-- ✨ Smoother scrolling
-- ✨ Faster LSP response or timeout instead of hanging
-- ✨ Reduced lag with multiple windows open
-
-## Rollback if Needed
-
-If issues arise, you can:
-
-1. Delete `lua/plugins/blink-performance.lua`
-2. Re-enable plugins by setting `enabled = true`
-3. Revert updatetime to 250ms in options.lua
+1. `NVIM_APPNAME=nvim-lazy nvim --headless '+qa'`
+2. `:Lazy profile`
+3. `:checkhealth`

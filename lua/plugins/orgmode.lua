@@ -1,13 +1,5 @@
 return {
-  -- 1. Ensure the Treesitter parser for org is installed
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = { "org" },
-    },
-  },
-
-  -- 2. Install and configure nvim-orgmode
+  -- Install and configure nvim-orgmode
   {
     "nvim-orgmode/orgmode",
     event = "VeryLazy",

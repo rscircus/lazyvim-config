@@ -40,6 +40,3 @@ vim.keymap.set(
   "<cmd>lua require('config.util').toggle_colorcolumn()<cr>",
   { desc = "Toggle ColorColumn" }
 )
-
--- Toggle MiniMap
-vim.keymap.set("n", "<leader>m", "<cmd>lua MiniMap.toggle()<cr>", { desc = "MiniMap" })

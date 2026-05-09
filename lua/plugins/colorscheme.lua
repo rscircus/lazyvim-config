@@ -15,15 +15,15 @@ return {
       })
     end,
   },
-  { "shaunsingh/nord.nvim" },
-  { "kepano/flexoki-neovim", name = "flexoki" },
-  { "sainnhe/everforest" },
-  { "axgfn/parchment" },
+  { "shaunsingh/nord.nvim", lazy = true },
+  { "kepano/flexoki-neovim", name = "flexoki", lazy = true },
+  { "sainnhe/everforest", lazy = true },
+  { "axgfn/parchment", lazy = true },
   --  { "jayden-chan/base46.nvim" },
-  { "navarasu/onedark.nvim", lazy = false, opts = { style = "darker" } },
-  { "pineapplegiant/spaceduck" },
-  { "NLKNguyen/papercolor-theme" },
-  { "rebelot/kanagawa.nvim", opts = { theme = "wave", background = { dark = "wave", light = "lotus" } } },
+  { "navarasu/onedark.nvim", lazy = true, opts = { style = "darker" } },
+  { "pineapplegiant/spaceduck", lazy = true },
+  { "NLKNguyen/papercolor-theme", lazy = true },
+  { "rebelot/kanagawa.nvim", lazy = true, opts = { theme = "wave", background = { dark = "wave", light = "lotus" } } },
   {
     "LazyVim/LazyVim",
     opts = {

@@ -8,9 +8,7 @@ A performance-tuned [LazyVim](https://github.com/LazyVim/LazyVim) configuration 
 
 - Colorscheme: vim-paper with custom black italicized comments
 - Incline: Floating filename statusline with file icons
-- Mini.map: Auto-opening minimap with diagnostic and git integration
-- Satellite: Additional scrollbar indicators
-- Tint: Dim inactive windows
+- Satellite: Additional scrollbar indicators, lazy-loaded after startup
 - Transparency: nvim-transparent for terminal background
 - Smear Cursor: Smooth cursor animations
 
@@ -18,16 +16,15 @@ A performance-tuned [LazyVim](https://github.com/LazyVim/LazyVim) configuration 
 
 - Python (pyright + ruff)
 - Rust
-- Clojure
-- Markdown (with code execution via mdeval)
+- Markdown (with lazy-loaded code execution via mdeval)
 - Git, TOML, and dotfiles
 
 ### 🚀 Performance Optimizations
 
-- blink.cmp: Optimized completion with 100ms delay, 300ms LSP timeout
-- Disabled plugins: tint.nvim for multi-window performance, vim-move (using mini.move instead)
-- LSP timeout: 1000ms to prevent UI blocking
-- Update time: 100ms for faster responsiveness
+- blink.cmp: Optimized completion with delayed menu/docs and reduced ghost redraws
+- Lazy-loaded Quarto/Image/Molten and inactive colorschemes
+- Disabled plugins: tint.nvim, yanky.nvim, and unused Clojure/Conjure support
+- Update time: 200ms to balance responsiveness and idle CPU
 - See [PERFORMANCE_OPTIMIZATIONS.md](PERFORMANCE_OPTIMIZATIONS.md) for details
 
 ### 🛠️ Developer Tools
@@ -37,14 +34,12 @@ A performance-tuned [LazyVim](https://github.com/LazyVim/LazyVim) configuration 
 - GitUI: Terminal git interface
 - GV: Git commit browser (`<leader>gV`, current file with `<leader>gv`)
 - Git Blame: Virtual text blame info (disabled by default, toggle with `<leader>gu`)
-- Aerial: Code outline with LSP symbols
 - Navic: LSP location breadcrumbs
 - Treesitter Context: Show context at top of screen
 
 ### 🎯 Editing Enhancements
 
 - Mini.surround: Surround text with quotes/brackets/tags
-- Yanky: Enhanced yank history
 - Mini.move: Move lines and selections
 - Mini.diff: Inline git diff visualization
 - Mini.hipatterns: Highlight hex colors and patterns
@@ -71,7 +66,7 @@ A performance-tuned [LazyVim](https://github.com/LazyVim/LazyVim) configuration 
 - Diagnostics disabled by default
 - WSL clipboard integration
 - No window separators (clean look)
-- Spell check disabled
+- Spell check disabled by default, briefly enabled on prose saves
 
 ### File Picker
 

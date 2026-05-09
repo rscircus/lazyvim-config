@@ -2,6 +2,7 @@ return {
   -- 0. The Build Manager (The Fix for Lua 5.4 issues)
   {
     "vhyrro/luarocks.nvim",
+    lazy = true,
     priority = 1001, -- this plugin needs to run before anything else
     opts = {
       rocks = { "magick" }, -- Explicitly tell it to manage the 'magick' rock
@@ -11,6 +12,7 @@ return {
   -- 1. The Image Renderer
   {
     "3rd/image.nvim",
+    ft = { "markdown", "quarto", "vimwiki" },
     dependencies = { "luarocks.nvim" }, -- Wait for luarocks to finish first
     opts = {
       backend = "kitty",
@@ -34,6 +36,32 @@ return {
   {
     "benlubas/molten-nvim",
     version = "^1.0.0",
+    cmd = {
+      "MoltenDeinit",
+      "MoltenDelete",
+      "MoltenEnterOutput",
+      "MoltenEvaluateArgument",
+      "MoltenEvaluateLine",
+      "MoltenEvaluateOperator",
+      "MoltenEvaluateVisual",
+      "MoltenExportOutput",
+      "MoltenGoto",
+      "MoltenHideOutput",
+      "MoltenImagePopup",
+      "MoltenImportOutput",
+      "MoltenInfo",
+      "MoltenInit",
+      "MoltenInterrupt",
+      "MoltenLoad",
+      "MoltenNext",
+      "MoltenOpenInBrowser",
+      "MoltenPrev",
+      "MoltenReevaluateAll",
+      "MoltenReevaluateCell",
+      "MoltenRestart",
+      "MoltenSave",
+      "MoltenShowOutput",
+    },
     dependencies = { "3rd/image.nvim" },
     build = ":UpdateRemotePlugins",
     init = function()
@@ -53,7 +81,7 @@ return {
       "jmbuhr/otter.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    ft = { "quarto", "markdown" },
+    ft = "quarto",
     opts = {
       lspFeatures = {
         enabled = true,

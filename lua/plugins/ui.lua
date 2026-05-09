@@ -43,7 +43,7 @@ return {
   -- Tint inactive windows (disabled for performance)
   {
     "levouh/tint.nvim",
-    enabled = true, -- TODO: Can cause lag with many windows
+    enabled = false,
   },
 
   -- Expand window width with animation

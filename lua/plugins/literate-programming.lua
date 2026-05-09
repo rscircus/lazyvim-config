@@ -1,19 +1,25 @@
 return {
   "jubnzv/mdeval.nvim",
+  ft = "markdown",
   opts = {
-    -- To disable the "Execution Finished" notification,
-    -- override the on_exit callback with an empty function.
-    on_exit = function(code, output) end,
+    on_exit = function() end,
   },
   config = function(_, opts)
     require("mdeval").setup(opts)
-    
-    -- Create an autocommand that sets the keybinding only for markdown files
+
+    local function set_keymap(buffer)
+      vim.keymap.set("n", "<leader>e", require("mdeval").eval_code_block, {
+        desc = "Evaluate Code Block",
+        buffer = buffer,
+      })
+    end
+
+    set_keymap(0)
+
     vim.api.nvim_create_autocmd("FileType", {
-      pattern = {"markdown", "md"},
-      callback = function()
-        vim.keymap.set("n", "<leader>e", require("mdeval").eval_code_block, 
-          { desc = "Evaluate Code Block", buffer = true })
+      pattern = "markdown",
+      callback = function(args)
+        set_keymap(args.buf)
       end,
     })
   end,

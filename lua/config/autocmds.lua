@@ -30,15 +30,19 @@ create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
   command = [[ set filetype=markdown ]],
 })
 
--- Enable spell check for 5 seconds when saving files
+-- Enable spell check briefly for prose files after saving
 create_augroup("spell_check_on_save", { clear = true })
 create_autocmd("BufWritePost", {
-  desc = "Enable spell check for 5 seconds after saving",
+  desc = "Enable spell check briefly after saving prose files",
   group = "spell_check_on_save",
+  pattern = { "*.md", "*.mdx", "*.txt", "*.org" },
   callback = function()
-    vim.opt.spell = true
+    local win = vim.api.nvim_get_current_win()
+    vim.wo[win].spell = true
     vim.defer_fn(function()
-      vim.opt.spell = false
+      if vim.api.nvim_win_is_valid(win) then
+        vim.wo[win].spell = false
+      end
     end, 5000)
   end,
 })
