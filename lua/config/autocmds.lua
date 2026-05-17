@@ -43,6 +43,6 @@ create_autocmd("BufWritePost", {
       if vim.api.nvim_win_is_valid(win) then
         vim.wo[win].spell = false
       end
-    end, 5000)
+    end, 3000)
   end,
 })
