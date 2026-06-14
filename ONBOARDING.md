@@ -65,7 +65,9 @@ Three independent tools, stackable. All exist to cut visual load — the single 
 
 Common combo: `:ZenMode` for deep work on one file; add `:Twilight` if your eye keeps jumping to other functions; `:NoNeckPain` if you just want centered text without hiding the UI.
 
-The whole config leans this way already — diagnostics are **off by default** (no red squiggles nagging mid-thought; turn on per-need), no relative numbers, no window separators, animations off, a light low-contrast theme. It's a quiet room by default.
+The whole config leans this way already — diagnostics are **off by default** (no red squiggles nagging mid-thought; turn on per-need), no relative numbers, no window separators, a light low-contrast theme. It's a quiet room by default. (Animations are on, deliberately, for a bit of playfulness — see the fun plugins below.)
+
+For prose specifically: `<leader>uw` toggles **typewriter mode** (cursor line stays centered as you type), and `render-markdown.nvim` renders headings/tables/checkboxes inline so a markdown file reads like the finished thing while you edit it.
 
 ---
 
@@ -84,14 +86,22 @@ These aren't add-ons — they're the existing features, framed by what they do f
 
   > Note: this is Neovim-local org capture, **separate** from the Apple Notes spine that is your real task system. Use it for in-editor "don't lose this thought while coding" capture, then move anything durable to the spine. Don't let it become a second task tracker.
 - **AI without leaving the buffer.** `<leader>ac` drops Claude Code into a split; it can read context (`<leader>ab` adds the buffer) and propose diffs you accept/reject (`<leader>aa` / `<leader>ad`). Offloads the "where do I even start" stall and the boring mechanical edits.
+- **Sessions resume themselves.** Re-establishing context after an interruption is a classic ADHD tax — this config kills it. Open `nvim` in a project with no file argument and it **auto-restores that directory's session** (open buffers, layout, cursor). No keystroke, no "where was I." Manual control is still there: `<leader>qs` restore this dir, `<leader>ql` restore last session, `<leader>qd` don't save this one. (Built on LazyVim's `persistence.nvim`; auto-restore wired in `lua/config/autocmds.lua`.)
 
 ### Low-friction additions worth considering (not installed)
 
 Honest gaps, only if a real pain shows up — don't bulk-install:
 
 - **A scratch/persistent terminal toggle** (e.g. Snacks terminal, already available via LazyVim) — one key to a REPL and back, less context loss than a separate window.
-- **A session manager** so reopening Neovim drops you exactly where you left off — re-establishing context after an interruption is a classic ADHD tax. LazyVim ships persistence support; bind a "restore last session" key if cold-start friction bites.
 - **Pomodoro / timer**: skip it in-editor. You already have Calendar Focus and the physical shop timer; a second timer is a new spine tool (don't). Use the ones you have.
+
+### Playful, by choice
+
+Fun is a feature here, not a distraction — these are lazy-loaded and cost nothing at idle:
+
+- `<leader>ud` hatches a 🦆 that waddles across the buffer (`<leader>uD` cooks it). A pressure valve.
+- `<leader>fml` melts your code into falling rain (cellular-automaton) — the sanctioned "tests are broken, I need a second" ritual.
+- `<leader>tp` opens **Triforce** coding stats: XP, levels, per-language heatmap. Lean on the XP/heatmap for motivation — it also tracks streaks, but per your own rule (cumulative > consecutive) treat the streak counter as ignorable, not a stick.
 
 Anything new here is a **Layer 3 candidate** — shelve it for a week before committing. Enthusiasm at minute one isn't signal.
 

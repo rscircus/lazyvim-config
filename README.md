@@ -6,7 +6,7 @@ A personal [LazyVim](https://github.com/LazyVim/LazyVim) setup on **Neovim 0.12*
 
 ## Design philosophy
 
-1. **Performance is the priority.** Lazy-load by default; avoid plugins that redraw during normal editing. Disabled-on-purpose: `tint.nvim`, animations (`snacks_animate = false`), ghost-text completion, auto-enabled minimap. See [`PERFORMANCE_OPTIMIZATIONS.md`](PERFORMANCE_OPTIMIZATIONS.md).
+1. **Performance is the priority.** Lazy-load by default; avoid plugins that redraw during normal editing. Disabled-on-purpose: `tint.nvim`, ghost-text completion, auto-enabled minimap. See [`PERFORMANCE_OPTIMIZATIONS.md`](PERFORMANCE_OPTIMIZATIONS.md). (Snacks animations are deliberately *on* — a chosen exception for playfulness.)
 2. **Quiet UI.** Diagnostics off by default, no relative numbers, no window separators, light `vim-paper` theme with black italic comments, spell only briefly on prose save.
 3. **Trim, don't accumulate.** A new plugin must be justified against the existing set, not added alongside a duplicate. Decisions are logged in commits and the two perf/AGENTS docs.
 4. **Lean on native Neovim.** On 0.12, LazyVim already routes LSP through native `vim.lsp` config and ships default LSP keymaps (`grn`, `gra`, `grr`, `gri`, `]d`/`[d`) — don't re-implement them. Options that match LazyVim/Neovim defaults are not restated.
@@ -66,7 +66,26 @@ Bridges the [Claude Code](https://claude.ai/code) CLI you already run into a Neo
 | `<leader>cs`  | Sort selected lines (visual)    |
 | `<leader>uo`  | Toggle CursorColumn             |
 | `<leader>uO`  | Toggle ColorColumn (81 ↔ off)   |
+| `<leader>uw`  | Toggle typewriter mode (centered cursor) |
 | `<leader>e`   | Evaluate code block (markdown, mdeval) |
+
+### Sessions
+
+Opening `nvim` in a project with no file argument auto-restores that directory's session. Manual control:
+
+| Keymap        | Action                          |
+| ------------- | ------------------------------- |
+| `<leader>qs`  | Restore session (this dir)      |
+| `<leader>ql`  | Restore last session            |
+| `<leader>qd`  | Don't save the current session  |
+
+### Fun
+
+| Keymap        | Action                          |
+| ------------- | ------------------------------- |
+| `<leader>ud` / `<leader>uD` | Hatch 🦆 / cook it |
+| `<leader>fml` | Make it rain (cellular-automaton) |
+| `<leader>tp`  | Coding stats (Triforce)         |
 
 ### Surround (`gz`, not `s`, to avoid leap conflict)
 
