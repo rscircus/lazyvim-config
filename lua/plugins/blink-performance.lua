@@ -13,11 +13,6 @@ return {
         menu = {
           -- Delay showing menu to reduce UI updates (0ms is too aggressive)
           auto_show_delay_ms = 200,
-          -- Faster draw (default is 5ms but can go lower)
-          -- TODO: inexistant draw_delay_ms = 0,
-          -- Optimize scrollbar updates
-          -- scrollbar = true,
-          -- border = "rounded",
         },
         documentation = {
           -- Delay showing docs to reduce lag
@@ -31,31 +26,9 @@ return {
           enabled = false, -- Disable ghost text for better performance
         },
       },
-      -- Optimize source providers
       sources = {
-        -- Increase timeout for slow providers
-        -- TODO: Unknown: timeout_ms = 500,
         -- Minimum keyword length before triggering
         min_keyword_length = 2,
-        -- providers = {
-        --   lsp = {
-        --     score_offset = 10, -- Prioritize LSP
-        --     timeout_ms = 300,
-        --   },
-        --   path = {
-        --     score_offset = 5,
-        --     timeout_ms = 200,
-        --   },
-        --   snippets = {
-        --     score_offset = -1,
-        --     timeout_ms = 200,
-        --   },
-        --   buffer = {
-        --     score_offset = -3,
-        --     timeout_ms = 200,
-        --     max_items = 5, -- Limit buffer completions
-        --   },
-        -- },
       },
       -- Optimize appearance with better performance
       appearance = {
