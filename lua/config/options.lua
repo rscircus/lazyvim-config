@@ -12,48 +12,11 @@ opt.relativenumber = false
 opt.wrap = true
 -- opt.background = "dark"
 
--- do not show separators
+-- do not show separators (fully replaces LazyVim's fillchars, dropping fold glyphs by design)
 opt.fillchars = { vert = " ", vertleft = " ", vertright = " ", eob = " ", horiz = " ", horizup = " ", horizdown = " " }
 
--- Save undo history
-opt.undofile = true
-
---vim.cmd()
-opt.clipboard = "unnamedplus"
-
--- Balance responsiveness with idle CPU usage
-opt.updatetime = 200
-opt.signcolumn = "yes"
--- TODO: opt.scrolloff = 8
-
--- Disable spell checking on startup
-opt.spell = false
-
--- WINDOWS special handling
-if vim.fn.has("wsl") == 1 then
-  vim.g.clipboard = {
-    name = "WSL",
-    copy = {
-      ["+"] = { "clip.exe" },
-      ["*"] = { "clip.exe" },
-    },
-    paste = {
-      ["+"] = {
-        "powershell.exe",
-        "-noprofile",
-        "-c",
-        '[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      },
-      ["*"] = {
-        "powershell.exe",
-        "-noprofile",
-        "-c",
-        '[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      },
-    },
-    cache_enabled = false,
-  }
-end
+-- Keep a few lines of context around the cursor
+opt.scrolloff = 8
 
 -- Python
 -- LSP Server to use for Python.
