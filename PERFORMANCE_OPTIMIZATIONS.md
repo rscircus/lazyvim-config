@@ -18,7 +18,9 @@ This config prioritizes lazy-loading and avoids plugins that redraw heavily duri
 
 - Disabled `tint.nvim`; it can lag with many windows.
 - Disabled `yanky.nvim`; it can be heavy on large sessions.
-- Kept animations disabled through `vim.g.snacks_animate = false`.
+- Animations re-enabled (`vim.g.snacks_animate = true`) — a deliberate
+  playfulness choice that overrides the perf default. Revert to `false`
+  if idle CPU / redraw becomes a problem.
 
 ### LSP Cleanup
 

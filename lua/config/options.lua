@@ -25,4 +25,5 @@ vim.g.lazyvim_python_lsp = "pyright"
 -- Set to "ruff_lsp" to use the old LSP implementation version.
 vim.g.lazyvim_python_ruff = "ruff"
 
-vim.g.snacks_animate = false
+-- Animations on for playfulness (overrides the perf-default; see PERFORMANCE_OPTIMIZATIONS.md)
+vim.g.snacks_animate = true
