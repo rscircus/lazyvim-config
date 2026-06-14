@@ -10,7 +10,7 @@ This config prioritizes lazy-loading and avoids plugins that redraw heavily duri
 
 - Lazy-loaded Quarto/Image/Molten stack.
 - Lazy-loaded inactive colorschemes.
-- Lazy-loaded `mdeval.nvim`, `fidget.nvim`, `satellite.nvim`, and `zen-mode.nvim`.
+- Lazy-loaded `mdeval.nvim`, `fidget.nvim`, `neominimap.nvim`, and `zen-mode.nvim`.
 - Removed stale MiniMap keymap while `mini.map` is disabled.
 - Removed unsupported `org` Treesitter ensure entry; `orgmode` provides its own setup.
 
