@@ -8,7 +8,7 @@ A performance-tuned [LazyVim](https://github.com/LazyVim/LazyVim) configuration 
 
 - Colorscheme: vim-paper with custom black italicized comments
 - Incline: Floating filename statusline with file icons
-- Satellite: Additional scrollbar indicators, lazy-loaded after startup
+- Neominimap: Code minimap (off by default — toggle with `<leader>nm`)
 - Transparency: nvim-transparent for terminal background
 - Smear Cursor: Smooth cursor animations
 
@@ -56,6 +56,29 @@ A performance-tuned [LazyVim](https://github.com/LazyVim/LazyVim) configuration 
 - Showkeys: Display pressed keys (`:ShowkeysToggle`)
 - Prettier: Automatic formatting for web files
 - Snacks: Modern picker and file explorer
+
+### 🗺️ Minimap (Neominimap)
+
+Code minimap powered by [neominimap.nvim](https://github.com/Isrothy/neominimap.nvim). Loads on `:Neominimap` or keymap.
+
+**Off by default** — auto-enable was disabled because the floating layout overlays the buffer and feels sticky to dismiss. Toggle on demand instead.
+
+| Keymap        | Action                          |
+| ------------- | ------------------------------- |
+| `<leader>nm`  | Toggle minimap (global)         |
+| `<leader>no`  | Enable minimap (global)         |
+| `<leader>nc`  | Disable minimap (global)        |
+| `<leader>nr`  | Refresh minimap                 |
+| `<leader>nwt` | Toggle minimap for window       |
+| `<leader>nbt` | Toggle minimap for buffer       |
+| `<leader>nf`  | Focus minimap (jump into it)    |
+| `<leader>nu`  | Unfocus minimap (jump back)     |
+
+**Troubleshooting "can't hide it":**
+
+- `<leader>nc` disables globally. If it lingers, also run `:Neominimap WinDisable` and `:Neominimap BufDisable` — scope is sticky per-window/per-buffer.
+- If a buffer keeps re-opening the minimap, add its filetype to `exclude_filetypes` in `lua/plugins/neominimap.lua`.
+- To switch from `float` (overlay) to `split` (its own window), set `layout = "split"` in the same file. Split layout is easier to dismiss but consumes a column.
 
 ## 🎮 Key Customizations
 
