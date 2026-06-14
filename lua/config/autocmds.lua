@@ -43,6 +43,35 @@ create_autocmd("FileType", {
   end,
 })
 
+-- Auto-restore the directory session on startup when nvim is opened with no
+-- file arguments — land exactly where you left off, no keystroke. Manual
+-- control still available via <leader>qs / <leader>ql / <leader>qd.
+create_augroup("auto_restore_session", { clear = true })
+create_autocmd("VimEnter", {
+  desc = "Restore the session for the current directory on bare startup",
+  group = "auto_restore_session",
+  nested = true,
+  callback = function()
+    -- Skip if files were passed, stdin was piped, or we're in a git commit etc.
+    if vim.fn.argc() > 0 or vim.g.started_with_stdin then
+      return
+    end
+    if vim.bo.filetype == "gitcommit" or vim.bo.filetype == "gitrebase" then
+      return
+    end
+    local ok, persistence = pcall(require, "persistence")
+    if ok then
+      persistence.load()
+    end
+  end,
+})
+create_autocmd("StdinReadPre", {
+  group = "auto_restore_session",
+  callback = function()
+    vim.g.started_with_stdin = true
+  end,
+})
+
 -- Enable spell check briefly for prose files after saving
 create_augroup("spell_check_on_save", { clear = true })
 create_autocmd("BufWritePost", {
