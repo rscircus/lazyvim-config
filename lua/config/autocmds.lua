@@ -30,6 +30,19 @@ create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
   command = [[ set filetype=markdown ]],
 })
 
+-- Spell check: off by default, even for prose. LazyVim's wrap_spell autocmd
+-- turns it on for markdown/text/gitcommit/typst — override that back off so
+-- the only time spell shows is the brief window after saving (below).
+create_augroup("spell_off", { clear = true })
+create_autocmd("FileType", {
+  desc = "Keep spell check off for prose (override LazyVim's wrap_spell)",
+  group = "spell_off",
+  pattern = { "markdown", "text", "plaintex", "typst", "gitcommit", "org" },
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})
+
 -- Enable spell check briefly for prose files after saving
 create_augroup("spell_check_on_save", { clear = true })
 create_autocmd("BufWritePost", {
@@ -43,6 +56,6 @@ create_autocmd("BufWritePost", {
       if vim.api.nvim_win_is_valid(win) then
         vim.wo[win].spell = false
       end
-    end, 3000)
+    end, 5000)
   end,
 })
