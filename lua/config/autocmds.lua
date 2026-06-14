@@ -37,7 +37,7 @@ create_augroup("spell_off", { clear = true })
 create_autocmd("FileType", {
   desc = "Keep spell check off for prose (override LazyVim's wrap_spell)",
   group = "spell_off",
-  pattern = { "markdown", "text", "plaintex", "typst", "gitcommit", "org" },
+  pattern = { "markdown", "text", "plaintex", "typst", "gitcommit" },
   callback = function()
     vim.opt_local.spell = false
   end,
@@ -77,7 +77,7 @@ create_augroup("spell_check_on_save", { clear = true })
 create_autocmd("BufWritePost", {
   desc = "Enable spell check briefly after saving prose files",
   group = "spell_check_on_save",
-  pattern = { "*.md", "*.mdx", "*.txt", "*.org" },
+  pattern = { "*.md", "*.mdx", "*.txt" },
   callback = function()
     local win = vim.api.nvim_get_current_win()
     vim.wo[win].spell = true
