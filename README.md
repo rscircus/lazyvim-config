@@ -1,6 +1,6 @@
 # 💤 nvim-lazy — a performance-tuned LazyVim config
 
-A personal [LazyVim](https://github.com/LazyVim/LazyVim) setup on **Neovim 0.12**, tuned for fast startup and a quiet UI. Optimized for Python/Rust/TypeScript/PHP work plus a literate-programming stack (Quarto, Molten, mdeval, Org).
+A personal [LazyVim](https://github.com/LazyVim/LazyVim) setup on **Neovim 0.12**, tuned for fast startup and a quiet UI. Optimized for Python/Rust/TypeScript/PHP work plus a literate-programming stack (Quarto, Molten, mdeval).
 
 > Working in this repo as a human or an AI agent? Read [`AGENTS.md`](AGENTS.md) — it's the source of truth for conventions, validation, and what to leave alone. This README is the onboarding + keymap reference.
 
@@ -69,6 +69,15 @@ Bridges the [Claude Code](https://claude.ai/code) CLI you already run into a Neo
 | `<leader>uw`  | Toggle typewriter mode (centered cursor) |
 | `<leader>e`   | Evaluate code block (markdown, mdeval) |
 
+### Capture → Apple (`<leader>k`)
+
+Fires straight into the Apple spine via `osascript` — no intermediary file. First use prompts for a one-time macOS permission grant.
+
+| Keymap        | Action                          |
+| ------------- | ------------------------------- |
+| `<leader>kr`  | Capture reminder → `🎼 Spine` (Reminders) |
+| `<leader>kn`  | Capture note → `Spine` (Notes)  |
+
 ### Sessions
 
 Opening `nvim` in a project with no file argument auto-restores that directory's session. Manual control:
@@ -134,7 +143,8 @@ lua/plugins/lsp/         # LSP overrides
 - **Editing:** mini.surround / move / diff / hipatterns, nvim-spider, ReplaceWithRegister
 - **Dev:** DAP, Neotest, navic, treesitter-context, GitUI, GV, fidget
 - **Focus:** Zen Mode, Twilight, No Neck Pain
-- **Literate:** Quarto + Molten + image.nvim + otter + mdeval; Org-mode
+- **Literate:** Quarto + Molten + image.nvim + otter + mdeval
+- **Capture:** Apple Reminders/Notes via osascript (`<leader>kr` / `<leader>kn`)
 
 ## Maintenance
 

@@ -79,12 +79,11 @@ These aren't add-ons — they're the existing features, framed by what they do f
 - **Quiet-by-default UI.** Diagnostics off, no animation, no separators. The editor doesn't compete for attention until you ask it to. Fewer involuntary attention-grabs.
 - **`<leader>e` and `\rc` are cheap.** Low activation energy to *do the thing* — the hardest moment for task initiation is the first keystroke. Single-key run beats remembering a CLI invocation.
 - **The "cowboy" nudge.** Press `h`/`j`/`k`/`l` (or `+`/`-`) 10+ times in a row and it warns you. A gentle pattern-interrupt against autopilot mashing — pushes you toward deliberate motions (`/search`, counts, jumps) instead of zoning out on held keys. Defined in `lua/config/util.lua`.
-- **Org capture = frictionless externalize.** Working memory is unreliable; get it out of your head fast. Three one-key templates under `<leader>o` write to fixed files in `~/orgfiles/`:
-  - `t` → TODO (`todo.org`)
-  - `j` → timestamped Journal entry (`journal.org`)
-  - `n` → Quick Note that captures a link back to where you were (`notes.org`)
+- **Capture straight into the Apple spine.** Working memory is unreliable; get it out of your head fast — *into the system you actually use*, not a sidecar. Two keys shell out to `osascript` (no plugin, no intermediary file):
+  - `<leader>kr` → reminder into the `🎼 Spine` Reminders list
+  - `<leader>kn` → note into the `Spine` Notes folder
 
-  > Note: this is Neovim-local org capture, **separate** from the Apple Notes spine that is your real task system. Use it for in-editor "don't lose this thought while coding" capture, then move anything durable to the spine. Don't let it become a second task tracker.
+  > This feeds the Apple spine directly; it is **not** a second task tracker living in Neovim. That's the whole point — the old orgmode capture made you promote notes by hand, so it's gone. First use pops a one-time macOS permission prompt for your terminal; approve once. Retarget the list/folder via the constants at the top of `lua/plugins/apple-capture.lua`.
 - **AI without leaving the buffer.** `<leader>ac` drops Claude Code into a split; it can read context (`<leader>ab` adds the buffer) and propose diffs you accept/reject (`<leader>aa` / `<leader>ad`). Offloads the "where do I even start" stall and the boring mechanical edits.
 - **Sessions resume themselves.** Re-establishing context after an interruption is a classic ADHD tax — this config kills it. Open `nvim` in a project with no file argument and it **auto-restores that directory's session** (open buffers, layout, cursor). No keystroke, no "where was I." Manual control is still there: `<leader>qs` restore this dir, `<leader>ql` restore last session, `<leader>qd` don't save this one. (Built on LazyVim's `persistence.nvim`; auto-restore wired in `lua/config/autocmds.lua`.)
 
